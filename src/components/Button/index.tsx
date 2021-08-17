@@ -17,7 +17,6 @@ export interface ButtonProps {
   size: Size;
   fullWidth?: boolean;
   buttonType: ButtonType;
-  onClick?: any
 }
 
 export const Button = ({ label, ...other }: ButtonProps) => {
