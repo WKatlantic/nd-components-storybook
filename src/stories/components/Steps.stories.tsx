@@ -1,17 +1,17 @@
 import React from 'react';
 import { ComponentMeta } from '@storybook/react';
-import { Steps } from '../../components/Steps';
+import { Step } from '../../components/Steps';
 
 export default {
   title: 'Components/Steps',
-  component: Steps
-} as ComponentMeta<typeof Steps>;
+  component: Step
+} as ComponentMeta<typeof Step>;
 
 export const Default = () => (
-  <Steps>
-    <Steps.Item title="Iniciate" />
-    <Steps.Item title="Select Upgrade" />
-    <Steps.Item active title="Confirm" />
-    <Steps.Item title="Review" />
-  </Steps>
+  <Step.Group>
+    <Step title="Initiate" />
+    <Step title="Select Upgrade" />
+    <Step title="Confirm" active />
+    <Step title="Review" />
+  </Step.Group>
 );
