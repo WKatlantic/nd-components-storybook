@@ -1,92 +1,54 @@
-import React, { useRef, useCallback, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Button } from '../Button';
-import { MdClose } from 'react-icons/md';
-import {
-  Actions,
-  Background,
-  CloseHeader,
-  Content,
-  Divider,
-  Header,
-  ModalContainer,
-  ModalInsideContainer,
-  Subtitle,
-  Title
-} from './styles';
+import { StyledModal } from './styles';
+import { Modal as SModal, Header as SHeader } from 'semantic-ui-react';
 
 interface ModalProps {
-  showModal;
-  setShowModal;
-  confirmFunction: () => void;
   title: string;
   subtitle: string;
-  children: JSX.Element | JSX.Element[];
+  description: string;
 }
 
-export const Modal = ({
-  showModal,
-  setShowModal,
-  confirmFunction,
-  title,
-  subtitle,
-  children
-}: ModalProps) => {
-  const modalRef = useRef();
-
-  const closeModal = e => {
-    if (modalRef.current === e.target) {
-      setShowModal(false);
-    }
-  };
-
-  const keyPress = useCallback(
-    e => {
-      if (e.key === 'Escape' && showModal) {
-        setShowModal(false);
-        console.log('I pressed');
-      }
-    },
-    [setShowModal, showModal]
-  );
-
-  useEffect(() => {
-    document.addEventListener('keydown', keyPress);
-    return () => document.removeEventListener('keydown', keyPress);
-  }, [keyPress]);
-
-  const CloseIcon = () => <MdClose size={24} />;
-
+export const Modal = ({ title, subtitle, description }: ModalProps) => {
+  const [open, setOpen] = useState(true);
   return (
-    <>
-      {showModal ? (
-        <Background>
-          <ModalContainer>
-            <CloseHeader>
-              <CloseIcon />
-            </CloseHeader>
-            <ModalInsideContainer>
-              <Header>
-                <Title>{title}</Title>
-                <Divider />
-                <Subtitle>{subtitle}</Subtitle>
-              </Header>
-              <Content>{children}</Content>
-              <Actions>
-                <Button
-                  onClick={confirmFunction}
-                  buttonType="standard"
-                  label="Standard"
-                />
-                <Button
-                  onClick={() => setShowModal(state => !state)}
-                  label="Negative"
-                  buttonType="negative"
-                />
-              </Actions>
-            </ModalInsideContainer>
-          </ModalContainer>
-        </Background>
-      ) : null}
-    </>
+    <StyledModal
+      onClose={() => setOpen(false)}
+      onOpen={() => setOpen(true)}
+      open={open}
+      trigger={<Button buttonType="primary" size="medium" label="Show modal" />}
+    >
+      <div className="modal-container">
+        <div className="modal-close"></div>
+        <SModal.Header>
+          <SHeader className="modal-title">{title}</SHeader>
+          <hr className="modal-divider" />
+          <SHeader className="modal-subtitle">{subtitle}</SHeader>
+        </SModal.Header>
+        <SModal.Content>
+          <SModal.Description>
+            <SHeader class="modal-paragraph" as="p">
+              {description}
+            </SHeader>
+          </SModal.Description>
+        </SModal.Content>
+        <SModal.Actions className="modal-actions">
+          <Button
+            size="medium"
+            label="Yes, I'm sure"
+            onClick={() => setOpen(false)}
+            buttonType="standard"
+            fullWidth
+          />
+          <Button
+            size="medium"
+            label="No, go back"
+            fullWidth
+            buttonType="negative"
+            onClick={() => setOpen(false)}
+          />
+        </SModal.Actions>
+      </div>
+    </StyledModal>
   );
 };
