@@ -1,25 +1,20 @@
 import React from 'react';
-import { Section, Divider, Main } from './styles';
+import { StyledSection, StyledDivider, StyledGroup } from './styles';
 
-export type Size = 'medium' | 'large';
-export interface ItemProps {
-  active?: boolean;
-  children: JSX.Element | JSX.Element[] | string | number;
-}
-export interface BreadcrumbProps {
-  size?: Size
-  children: JSX.Element | JSX.Element[] | string | number;
-}
-
-export const Breadcrumb = ({ children, size = 'medium' }: BreadcrumbProps) => (
-  <Main size={size}>{children}</Main>
+export const Breadcrumb = ({ children }) => (
+  <StyledGroup>{children}</StyledGroup>
 );
 
-const Item = ({ children, active }: ItemProps) => {
+interface BreadcrumbProps {
+  active?: boolean;
+  children: string;
+}
+
+const Item = ({ children, active }: BreadcrumbProps) => {
   return (
     <>
-      <Section active={active}>{children}</Section>
-      <Divider active={active}>|</Divider>
+      <StyledSection active={active}>{children}</StyledSection>
+      <StyledDivider active={active}>|</StyledDivider>
     </>
   );
 };
