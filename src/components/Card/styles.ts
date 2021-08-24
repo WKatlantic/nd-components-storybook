@@ -1,7 +1,6 @@
 import styled, { css } from 'styled-components';
 
 export const Image = styled.img`
-  object-fit: cover;
   height: 100%;
 `;
 
@@ -17,7 +16,6 @@ export const Main = styled.div`
   background: black;
   text-transform: uppercase;
   width: 100%;
-  height: 100%;
 `;
 
 export const Divider = styled.hr`
@@ -35,6 +33,7 @@ export const ItemContainer = styled.div``;
 export const ImageRow = styled.div`
   gap: 1rem;
   display: flex;
+  height: inherit;
 `;
 
 export const Container = styled.div<{ layout: string }>`
@@ -55,13 +54,13 @@ export const Container = styled.div<{ layout: string }>`
       }
 
       ${Divider} {
-        margin: 0.5625rem 0;
+        height: 1px;
+        margin: 0.5rem 0;
       }
 
       ${Title} {
         color: ${p => p.theme.lightPink};
         font-size: 1.25rem; // 20px
-        letter-spacing: 0.6px;
         font-weight: bold;
         margin: 0;
       }
@@ -99,7 +98,7 @@ export const Container = styled.div<{ layout: string }>`
       border: 1px solid ${p => p.theme.grey};
       padding: 0 2.4rem;
       width: 100%;
-      height: 100%;
+      height: 140px;
 
       display: grid;
       grid-template-columns: 3fr 5fr 1fr;
@@ -130,12 +129,6 @@ export const Container = styled.div<{ layout: string }>`
         margin: 0;
       }
 
-      ${ImageRow} {
-        ${Image} {
-          height: 140px;
-        }
-      }
-
       @media screen and (max-width: 1024px) {
         gap: 2rem;
         display: flex;
@@ -161,20 +154,24 @@ export const Container = styled.div<{ layout: string }>`
     p.layout === 'D' &&
     css`
       border: 1px solid ${p => p.theme.grey};
-      padding: 60px 30px 30px 18px;
-      width: 400px;
-      height: auto;
+      padding: 40px 30px 25px 30px;
+      width: 395px;
+      height: 569px;
       text-align: center;
 
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
       ${Image} {
-        width: 180px;
-        height: 196px;
+        width: 152px;
+        height: 189px;
         margin: 0 auto;
       }
 
       ${Divider} {
-        margin: 0.7rem 0;
-        margin-bottom: 5rem;
+        height: 2px;
+        margin: 0;
         background: ${p => p.theme.darkGrey};
       }
 
@@ -182,14 +179,14 @@ export const Container = styled.div<{ layout: string }>`
         color: ${p => p.theme.white};
         font-size: 1.25rem;
         font-weight: 600;
-        margin-bottom: 1.5625rem;
+        margin-bottom: 1.5rem;
       }
 
       ${Subtitle} {
+        margin: 0;
         color: ${p => p.theme.mediumGray};
         font-size: 1.15rem;
         font-weight: 600;
-        margin-top: 6.875rem;
         padding: 0 30px;
         line-height: 33px;
       }
