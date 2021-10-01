@@ -50,6 +50,7 @@ const theme = {
     10: '40px'
   },
   fontSizes: {
+    s: '13px',
     sm: '14px',
     md: '16px',
     lg: '20px'
