@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { AvatarStyles } from './styles';
 import placeholderImage from '../../assets/placeholder/EmptyCharacter.png';
 
@@ -8,6 +8,9 @@ export type AvatarProps = {
 };
 
 const Avatar = ({ image, ...args }: AvatarProps) => {
+  useEffect(() => {
+    console.log(image);
+  }, [image]);
   return <AvatarStyles src={image || placeholderImage} {...args} />;
 };
 
