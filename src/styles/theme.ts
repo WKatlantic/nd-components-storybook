@@ -32,8 +32,8 @@ const theme = {
   },
   radii: {
     full: '9999px',
-    small: '5px',
-    medium: '12px'
+    sm: '5px',
+    md: '12px'
   },
   sizes: {
     full: '100%'
@@ -51,9 +51,7 @@ const theme = {
     10: '40px'
   },
   fontSizes: {
-    '3xs': '8px',
-    '2xs': '10px',
-    xs: '12px',
+    s: '13px',
     sm: '14px',
     md: '16px',
     lg: '20px'
