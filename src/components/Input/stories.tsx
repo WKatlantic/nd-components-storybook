@@ -8,6 +8,10 @@ export default {
   title: 'Components/Input',
   component: Input,
   argTypes: {
+    size: {
+      options: ['sm', 'md'],
+      control: { type: 'select' }
+    },
     disabled: {
       control: { type: 'boolean' }
     },
@@ -25,6 +29,7 @@ Default.args = {
   label: 'Label',
   hint: 'Input hints',
   color: 'black',
+  size: 'md',
   disabled: false,
   error: ''
 };
