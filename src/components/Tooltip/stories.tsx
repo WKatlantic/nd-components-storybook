@@ -5,9 +5,13 @@ import { Story, Meta } from '@storybook/react/types-6-0';
 import Tooltip, { TooltipProps } from '.';
 
 export default {
-  title: 'Components/Done/Tooltip',
+  title: 'Components/Tooltip',
   component: Tooltip,
   argTypes: {
+    side: {
+      options: ['top', 'right', 'bottom', 'left'],
+      control: { type: 'radio' }
+    },
     children: {
       control: { type: 'disabled' }
     }
