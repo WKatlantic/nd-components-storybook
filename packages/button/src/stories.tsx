@@ -18,9 +18,8 @@ export default {
       options: ['md', 'sm'],
       control: { type: 'select' }
     },
-    shape: {
-      options: ['rounded', 'squared'],
-      control: { type: 'select' }
+    rounded: {
+      control: { type: 'boolean' }
     },
     disabled: {
       control: { type: 'boolean' }
@@ -36,15 +35,30 @@ type ButtonStory = Story<ButtonProps>;
 export const Default: ButtonStory = args => <Button {...args} />;
 
 Default.args = {
-  children: 'Label',
+  children: 'Default Button',
   size: 'md'
 };
 
-export const WithIcon: ButtonStory = args => <Button {...args} />;
+export const WithLeftIcon: ButtonStory = args => <Button {...args} />;
 
-WithIcon.args = {
-  children: 'Label',
-  size: 'md',
-  icon: <AiOutlineClose />,
-  iconPosition: 'left'
+WithLeftIcon.args = {
+  children: (
+    <>
+      <AiOutlineClose />
+      Left Icon Button
+    </>
+  ),
+  size: 'md'
+};
+
+export const WithRightIcon: ButtonStory = args => <Button {...args} />;
+
+WithRightIcon.args = {
+  children: (
+    <>
+      Right Icon Button
+      <AiOutlineClose />
+    </>
+  ),
+  size: 'md'
 };
