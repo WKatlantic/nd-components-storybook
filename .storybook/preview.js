@@ -1,6 +1,7 @@
-import ThemeProvider from '@nd-ui/provider';
+import { ThemeProvider } from 'styled-components';
 
-import GlobalStyle from './global';
+import GlobalStyles from '../src/styles/global';
+import theme from '../src/styles/theme';
 
 export const parameters = {
   backgrounds: {
@@ -8,25 +9,16 @@ export const parameters = {
     values: [
       {
         name: 'dark',
-        value: '#000'
-      },
-      {
-        name: 'white',
-        value: '#FFF'
+        value: theme.colors.black
       }
     ]
-  },
-  options: {
-    storySort: {
-      order: ['Getting Started', 'Components']
-    }
   }
 };
 
 export const decorators = [
   Story => (
-    <ThemeProvider>
-      <GlobalStyle />
+    <ThemeProvider theme={theme}>
+      <GlobalStyles />
       <Story />
     </ThemeProvider>
   )
