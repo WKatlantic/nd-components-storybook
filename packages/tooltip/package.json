@@ -1,8 +1,11 @@
 {
   "name": "@nd-ui/tooltip",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "license": "MIT",
   "description": "ND Tooltip.",
+  "dependencies": {
+    "@radix-ui/react-tooltip": "^0.1.0"
+  },
   "devDependencies": {
     "react": "^17.0.0"
   }

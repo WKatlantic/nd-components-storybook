@@ -1,9 +1,10 @@
 {
   "name": "@nd-ui/toggle",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "license": "MIT",
   "description": "ND Toggle.",
   "dependencies": {
+    "@radix-ui/react-label": "^0.1.0",
     "@radix-ui/react-toggle": "0.1.1"
   },
   "devDependencies": {

@@ -1,8 +1,6 @@
 import styled, { css } from '@nd-ui/system';
-import { BsInfoCircleFill } from 'react-icons/bs';
 
 import media from 'styled-media-query';
-import { ContentHeadingProps } from '.';
 
 export const Wrapper = styled.div`
   display: flex;
@@ -12,10 +10,6 @@ export const Wrapper = styled.div`
 
 export const Title = styled.h3`
   ${({ theme }) => css`
-    display: inline-flex;
-    gap: 10px;
-    align-items: center;
-
     font-family: 'Titillium Web';
     font-weight: ${theme.fontWeights.medium};
     font-size: ${theme.fontSizes.lg};
@@ -33,8 +27,8 @@ export const Title = styled.h3`
   `};
 `;
 
-export const Description = styled.p<Pick<ContentHeadingProps, 'line'>>`
-  ${({ theme, line }) => css`
+export const Description = styled.p`
+  ${({ theme }) => css`
     font-family: 'Titillium Web';
     font-size: ${theme.fontSizes.md};
     font-weight: ${theme.fontWeights.medium};
@@ -45,9 +39,8 @@ export const Description = styled.p<Pick<ContentHeadingProps, 'line'>>`
     letter-spacing: 0.03em;
     margin: 0;
 
-    padding-left: ${line && '1rem'};
-
-    border-left: ${line && `2px solid ${theme.colors.white}`};
+    padding-left: 1rem;
+    border-left: 2px solid ${theme.colors.white};
 
     ${media.lessThan('medium')`
       font-size: ${theme.fontSizes.sm};
@@ -56,15 +49,4 @@ export const Description = styled.p<Pick<ContentHeadingProps, 'line'>>`
       letter-spacing: 0;
     `}
   `};
-`;
-
-export const InfoIcon = styled(BsInfoCircleFill)`
-  ${({ theme }) => css`
-    color: ${theme.colors.white};
-    font-size: 19px;
-
-    ${media.lessThan('medium')`
-      font-size: 13px;
-    `}
-  `}
 `;

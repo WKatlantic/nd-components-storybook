@@ -116,7 +116,6 @@ const variantTypes = (theme: DefaultTheme) => ({
 
     &:disabled {
       color: ${theme.colors.grey3};
-      box-shadow: 0 0 0 1px ${theme.colors.grey1} inset;
       background: ${transparentize(0.8, theme.colors.grey1)};
     }
   `
@@ -124,7 +123,7 @@ const variantTypes = (theme: DefaultTheme) => ({
 
 const sizesTypes = (roundedOrSquared?: boolean) => ({
   md: css`
-    padding: ${roundedOrSquared ? '0' : '0.5rem 1.5rem'};
+    padding: ${roundedOrSquared ? '0' : '0.5rem 2rem'};
     font-size: 14px;
     line-height: 24px;
     width: ${roundedOrSquared && '40px'};
@@ -132,6 +131,8 @@ const sizesTypes = (roundedOrSquared?: boolean) => ({
   `,
   sm: css`
     padding: ${roundedOrSquared ? '0' : '0.5rem 1rem'};
+    width: ${roundedOrSquared && '32px'};
+    height: ${roundedOrSquared && '32px'};
   `
 });
 
@@ -145,19 +146,13 @@ const buttonStylesModifiers = {
     }
   `,
 
-  shape: (theme: DefaultTheme) => ({
-    rounded: css`
-      border-radius: ${theme.radii.full};
-    `,
-
-    squared: css`
-      border-radius: 0;
-    `
-  })
+  rounded: (theme: DefaultTheme) => css`
+    border-radius: ${theme.radii.full};
+  `
 };
 
 export const ButtonStyled = styled.button<ButtonProps>`
-  ${({ theme, variant, size, fluid, disabled, shape }) => css`
+  ${({ theme, variant, size, fluid, disabled, rounded, squared }) => css`
     border: none;
     background: none;
     font-weight: 600;
@@ -173,12 +168,12 @@ export const ButtonStyled = styled.button<ButtonProps>`
     gap: 8px;
     transition: ${theme.durations.fast};
 
-    ${sizesTypes(!!shape)[size!]};
+    ${sizesTypes(rounded || squared)[size!]};
 
     ${variantTypes(theme)[variant!]}
 
     ${disabled && buttonStylesModifiers.disabled}
-    ${shape && buttonStylesModifiers.shape(theme)[shape]}
+    ${rounded && buttonStylesModifiers.rounded(theme)}
 
     ${fluid && buttonStylesModifiers.fluid}
   `}

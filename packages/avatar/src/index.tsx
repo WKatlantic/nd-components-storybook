@@ -5,7 +5,7 @@ const PLACEHOLDER_IMAGE =
   'https://avatarfiles.alphacoders.com/188/thumb-1920-188870.jpg';
 
 export type AvatarProps = {
-  size: 24 | 32 | 48 | 64 | 80 | 88 | 160 | 192 | 240;
+  size: 'xss' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
   image?: string;
 };
 

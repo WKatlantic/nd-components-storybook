@@ -10,7 +10,6 @@ export type ButtonProps = {
   disabled?: boolean;
   children?: React.ReactNode;
   icon?: React.ReactNode;
-  iconPosition?: 'left' | 'right';
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
@@ -19,7 +18,6 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       type = 'button',
       variant = 'primary',
       size = 'md',
-      iconPosition = 'left',
       children,
       shape,
       icon,
@@ -36,9 +34,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         shape={shape}
         {...other}
       >
-        {icon && iconPosition === 'left' && icon}
-        {!shape && children}
-        {icon && iconPosition === 'right' && icon}
+        {!shape && !icon && children}
       </ButtonStyled>
     );
   }

@@ -23,7 +23,7 @@ export interface CharacterProps {
 
 const Character = ({ active, index, type, image }: CharacterProps) => {
   const isMobile = useMediaQuery('(max-width: 768px)');
-  const size = isMobile ? 80 : 160;
+  const size = isMobile ? 'sm' : 'lg';
 
   return (
     <Container active={active} size={size}>

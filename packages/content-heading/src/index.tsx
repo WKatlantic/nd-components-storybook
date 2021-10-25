@@ -1,25 +1,15 @@
 import React from 'react';
-import { Description, InfoIcon, Title, Wrapper } from './styles';
+import { Description, Title, Wrapper } from './styles';
 
 export interface ContentHeadingProps {
   title: string;
   description?: string;
-  info?: boolean;
-  line?: boolean;
 }
 
-const ContentHeading = ({
-  title,
-  description,
-  info,
-  line = true
-}: ContentHeadingProps) => (
+const ContentHeading = ({ title, description }: ContentHeadingProps) => (
   <Wrapper>
-    <Title>
-      {title}
-      {info && <InfoIcon />}
-    </Title>
-    {description && <Description line={line}>{description}</Description>}
+    <Title>{title}</Title>
+    {description && <Description>{description}</Description>}
   </Wrapper>
 );
 

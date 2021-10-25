@@ -9,7 +9,7 @@ export default {
   component: Avatar,
   argTypes: {
     size: {
-      options: [24, 32, 48, 64, 80, 88, 160, 192, 240],
+      options: ['xxl', 'xl', 'md', 'sm', 'xs', 'xss'],
       control: { type: 'select' }
     }
   }
@@ -18,5 +18,5 @@ export default {
 export const Default: Story<AvatarProps> = args => <Avatar {...args} />;
 
 Default.args = {
-  size: 80
+  size: 'xxl'
 };
