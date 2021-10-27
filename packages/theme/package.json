@@ -1,6 +1,6 @@
 {
   "name": "@neon-district/theme",
-  "version": "1.0.21",
+  "version": "1.0.20",
   "license": "MIT",
   "description": "ND Theme.",
   "source": "index.ts",
