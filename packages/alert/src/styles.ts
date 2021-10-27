@@ -1,6 +1,8 @@
 import styled, { css } from '@neon-district/system';
 
-import theme from '@neon-district/theme';
+import { transparentize } from 'polished';
+
+import theme from '@neon-district/system';
 
 import { AlertProps } from '.';
 
@@ -15,7 +17,7 @@ const colorMatch = {
 
 const variantTypes = {
   solid: (type: wrapperProps['type']) => css`
-    background: ${colorMatch[type!]};
+    background: ${transparentize('0.8', colorMatch[type!])};
   `,
   outline: () => css`
     background: transparent;

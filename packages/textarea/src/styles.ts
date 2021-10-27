@@ -5,6 +5,7 @@ import ResizeTextarea from 'react-textarea-autosize';
 import * as LabelBase from '@radix-ui/react-label';
 
 import { TextareaProps } from '.';
+import { transparentize } from 'polished';
 
 export const Wrapper = styled.div`
   color: white;
@@ -22,7 +23,7 @@ export const Label = styled(LabelBase.Root)`
 const textAreaInputVariants = (theme: DefaultTheme) => ({
   disabled: css`
     &:disabled {
-      background: ${theme.colors.grey1};
+      background: ${transparentize('0.5', theme.colors.grey1)};
       cursor: not-allowed;
     }
   `,

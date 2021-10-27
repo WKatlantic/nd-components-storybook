@@ -1,23 +1,33 @@
 {
   "name": "@neon-district/textarea",
-  "version": "1.0.12",
+  "version": "1.0.14",
   "license": "MIT",
-  "description": "ND Textarea.",
   "source": "index.ts",
   "main": "dist/index.js",
   "module": "dist/index.module.js",
   "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/index.js",
+      "default": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsup index.ts --dts --minify --sourcemap inline",
+    "clean": "rimraf ./dist"
+  },
   "files": [
-    "src",
     "dist"
   ],
-  "dependencies": {
+  "peerDependencies": {
     "@neon-district/system": "^1.0.0",
-    "react-textarea-autosize": "^8.3.3",
     "react": "^17.0.0"
+  },
+  "dependencies": {
+    "react-textarea-autosize": "^8.3.3"
   },
   "publishConfig": {
     "access": "public"
   },
-  "gitHead": "3973cb752768a9d5f780b9d3be9e57fe937f97b7"
+  "gitHead": "0d32c22e7e7a7cdddf9eb3a9259a1765349957db"
 }
