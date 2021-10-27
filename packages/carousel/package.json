@@ -26,7 +26,6 @@
   "dependencies": {
     "@neon-district/base-carousel": "^1.0.14",
     "@neon-district/button": "^1.0.22",
-    "polished": "~4.1.3",
     "react-slick": "^0.28.1"
   },
   "publishConfig": {
