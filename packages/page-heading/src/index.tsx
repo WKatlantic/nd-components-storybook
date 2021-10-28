@@ -2,7 +2,7 @@ import React from 'react';
 
 import { useMediaQuery } from '@neon-district/hooks';
 
-import { Button } from '@neon-district/button';
+import Button from '@neon-district/button';
 
 import {
   Wrapper,
@@ -16,21 +16,31 @@ import {
 } from './styles';
 
 export type PageHeadingProps = {
-  /**
-   *
-   */
   title: string;
-  /**
-   *
-   */
   description?: string;
-  /**
-   *
-   */
   children?: React.ReactNode;
 };
 
-export const PageHeading = ({
+const ChildrenButtons = ({
+  children,
+  isMobile
+}: {
+  children: React.ReactNode;
+  isMobile: boolean;
+}) => (
+  <>
+    {React.Children.map(children, (child: any) => {
+      if (child?.type === Button && isMobile) {
+        return React.cloneElement(child, {
+          fluid: true
+        });
+      }
+      return child;
+    })}
+  </>
+);
+
+const PageHeading = ({
   description,
   children,
   title,
@@ -60,21 +70,4 @@ export const PageHeading = ({
   );
 };
 
-type ChildrenButtonsProps = {
-  children: React.ReactNode;
-  isMobile: boolean;
-};
-
-const ChildrenButtons = ({ children, isMobile }: ChildrenButtonsProps) => (
-  <>
-    {React.Children.map(children, (child: any) => {
-      if (child?.type === Button && isMobile) {
-        return React.cloneElement(child, {
-          fluid: true
-        });
-      }
-
-      return child;
-    })}
-  </>
-);
+export default PageHeading;

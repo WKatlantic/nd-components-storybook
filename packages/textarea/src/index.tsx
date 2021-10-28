@@ -5,21 +5,12 @@ import type { TextareaAutosizeProps } from 'react-textarea-autosize';
 import { Wrapper, Label, TextAreaInput, Message, Error } from './styles';
 
 export type TextareaProps = {
-  /**
-   *
-   */
   label?: string;
-  /**
-   *
-   */
   hint?: string | string[];
-  /**
-   *
-   */
   error?: string | string[];
 } & TextareaAutosizeProps;
 
-export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
+const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
   ({ label, hint, name, error, minRows = 3, ...props }, ref) => {
     return (
       <Wrapper>
@@ -40,3 +31,5 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
     );
   }
 );
+
+export default Textarea;

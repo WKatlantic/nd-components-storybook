@@ -5,26 +5,12 @@ import { Root, Trigger } from '@radix-ui/react-tooltip';
 import { Content, Arrow } from './styles';
 
 export type TooltipProps = {
-  /**
-   *
-   */
   text?: string;
-  /**
-   *
-   * @default "right"
-   */
   position?: 'top' | 'right' | 'bottom' | 'left';
-  /**
-   *
-   */
   children?: React.ReactNode;
 };
 
-export const Tooltip = ({
-  text,
-  position = 'right',
-  children
-}: TooltipProps) => {
+const Tooltip = ({ text, position = 'right', children }: TooltipProps) => {
   return (
     <Root>
       <Trigger asChild>{children}</Trigger>
@@ -37,3 +23,5 @@ export const Tooltip = ({
     </Root>
   );
 };
+
+export default Tooltip;

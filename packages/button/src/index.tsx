@@ -3,41 +3,17 @@ import React, { ButtonHTMLAttributes } from 'react';
 import { ButtonStyled } from './styles';
 
 export type ButtonProps = {
-  /**
-   *
-   */
   variant?: 'primary' | 'secondary' | 'destructive' | 'outline' | 'naked';
-  /**
-   *
-   */
   size?: 'md' | 'lg';
-  /**
-   *
-   */
   fluid?: boolean;
-  /**
-   *
-   */
   shape?: 'rounded' | 'squared';
-  /**
-   *
-   */
   disabled?: boolean;
-  /**
-   *
-   */
   children?: React.ReactNode;
-  /**
-   *
-   */
   icon?: React.ReactNode;
-  /**
-   *
-   */
   iconPosition?: 'left' | 'right';
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
-export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (
     {
       type = 'button',
@@ -67,3 +43,5 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     );
   }
 );
+
+export default Button;

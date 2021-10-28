@@ -3,33 +3,15 @@ import React, { InputHTMLAttributes } from 'react';
 import { Wrapper, Label, InputStyles, Message, Error } from './styles';
 
 export type InputProps = {
-  /**
-   *
-   */
   label?: string;
-  /**
-   *
-   */
   inputSize?: 'sm' | 'md';
-  /**
-   *
-   */
   hint?: string | string[];
-  /**
-   *
-   */
   error?: string | string[];
-  /**
-   *
-   */
   color?: 'white' | 'black' | 'primary';
-  /**
-   *
-   */
   disabled?: boolean;
 } & InputHTMLAttributes<HTMLInputElement>;
 
-export const Input = React.forwardRef<HTMLInputElement, InputProps>(
+const Input = React.forwardRef<HTMLInputElement, InputProps>(
   (
     {
       label,
@@ -62,3 +44,5 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
     );
   }
 );
+
+export default Input;

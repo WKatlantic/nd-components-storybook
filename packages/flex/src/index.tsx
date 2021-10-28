@@ -4,6 +4,8 @@ import styled from '@neon-district/system';
 
 export type FlexProps = HTMLAttributes<HTMLDivElement>;
 
-export const Flex = styled.div({
+const Flex = styled.div({
   display: 'flex'
 });
+
+export default Flex;

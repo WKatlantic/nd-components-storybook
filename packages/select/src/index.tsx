@@ -25,41 +25,17 @@ const ChevronDownIcon = () => (
 );
 
 export type SelectProps = {
-  /**
-   *
-   */
   label?: string;
-  /**
-   *
-   */
   name?: string;
-  /**
-   *
-   */
   hint?: string;
-  /**
-   *
-   */
   variant?: 'solid' | 'outline';
-  /**
-   *
-   */
   size?: 'xs' | 'sm' | 'md' | 'lg';
-  /**
-   *
-   */
   error?: string | string[];
-  /**
-   *
-   */
   placeholder?: string;
-  /**
-   *
-   */
   children?: React.ReactNode;
 } & Omit<SelectHTMLAttributes<HTMLSelectElement>, 'size'>;
 
-export const Select = ({
+const Select = ({
   label,
   name,
   hint,
@@ -101,3 +77,5 @@ export const Select = ({
     </Wrapper>
   );
 };
+
+export default Select;

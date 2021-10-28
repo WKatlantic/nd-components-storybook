@@ -11,17 +11,8 @@ import {
 } from './styles';
 
 export type RadioGroupProps = {
-  /**
-   *
-   */
   direction?: 'row' | 'column';
-  /**
-   *
-   */
   label?: string;
-  /**
-   *
-   */
   children?: React.ReactNode;
 } & RadioGroupBase.RadioGroupProps;
 
@@ -59,8 +50,10 @@ const RadioItem = ({ value, children, ...props }: RadioItemProps) => {
   );
 };
 
-export const Radio = () => {};
+const Radio = () => {};
 
 Radio.Group = RadioGroup;
 
 Radio.Item = RadioItem;
+
+export default Radio;

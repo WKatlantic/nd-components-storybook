@@ -3,26 +3,14 @@ import React from 'react';
 import { Wrapper, Title, Message } from './styles';
 
 export type AlertProps = {
-  /**
-   *
-   */
   title?: string;
-  /**
-   *
-   */
   message?: string;
-  /**
-   *
-   */
   variant?: 'solid' | 'outline';
-  /**
-   *
-   */
   type?: 'success' | 'error' | 'warning' | 'default';
   button?: React.ReactNode;
 };
 
-export const Alert = ({
+const Alert = ({
   title,
   message,
   variant = 'solid',
@@ -48,3 +36,5 @@ export const Alert = ({
     </Wrapper>
   );
 };
+
+export default Alert;

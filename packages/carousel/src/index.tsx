@@ -1,29 +1,19 @@
 import React from 'react';
 
-import {
-  BaseCarousel,
+import BaseCarousel, {
   BaseCarouselSettings
 } from '@neon-district/base-carousel';
 
-import { Button } from '@neon-district/button';
+import Button from '@neon-district/button';
 
 import { Item, Wrapper } from './styles';
 
 export type CarouselProps = {
-  /**
-   *
-   */
   items?: CarouselItemProps[];
-  /**
-   *
-   */
   settings?: BaseCarouselSettings;
 };
 
-/**
- * Carousel wrapper component
- */
-export const Carousel = ({ items, settings }: CarouselProps) => {
+const Carousel = ({ items, settings }: CarouselProps) => {
   const defaultSettings: BaseCarouselSettings = {
     dots: true,
     slidesToShow: 4,
@@ -68,24 +58,6 @@ export const Carousel = ({ items, settings }: CarouselProps) => {
   );
 };
 
-/**
- * Item component
- */
-type CarouselItemProps = {
-  /**
-   *
-   */
-  src?: string;
-  /**
-   *
-   */
-  alt?: string;
-  /**
-   *
-   */
-  label?: string;
-};
-
 const CarouselItem = ({ src, alt, label }: CarouselItemProps) => {
   return (
     <Item>
@@ -95,3 +67,11 @@ const CarouselItem = ({ src, alt, label }: CarouselItemProps) => {
     </Item>
   );
 };
+
+type CarouselItemProps = {
+  src?: string;
+  alt?: string;
+  label?: string;
+};
+
+export default Carousel;

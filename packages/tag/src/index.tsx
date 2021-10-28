@@ -56,7 +56,7 @@ const Remove = ({
   </RemoveWrapper>
 );
 
-export const Tag = ({
+const Tag = ({
   size = 'md',
   label,
   active = false,
@@ -90,3 +90,5 @@ export const Tag = ({
     </TagStyles>
   );
 };
+
+export default Tag;

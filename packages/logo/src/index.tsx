@@ -1,13 +1,10 @@
 import React from 'react';
 
 export type LogoProps = {
-  /**
-   *
-   */
   variant?: 'minimal' | 'full';
 };
 
-export const Logo = ({ variant }: LogoProps) => {
+const Logo = ({ variant }: LogoProps) => {
   return variant === 'full' ? (
     <svg xmlns="http://www.w3.org/2000/svg" width="250" height="16" fill="none">
       <path
@@ -69,3 +66,5 @@ export const Logo = ({ variant }: LogoProps) => {
     </svg>
   );
 };
+
+export default Logo;
