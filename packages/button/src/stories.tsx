@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Story } from '@storybook/react/types-6-0';
+import { Story } from '@storybook/react';
 
 import { Button, ButtonProps } from '.';
 
@@ -10,8 +10,27 @@ export default {
   title: 'Components/Forms/Button',
   component: Button,
   argTypes: {
-    icon: {
+    variant: {
+      options: ['primary', 'secondary', 'destructive', 'outline', 'naked'],
+      control: { type: 'select' }
+    },
+    size: {
+      options: ['md', 'sm'],
+      control: { type: 'select' }
+    },
+    shape: {
+      options: ['rounded', 'squared'],
+      control: { type: 'select' }
+    },
+    disabled: {
+      control: { type: 'boolean' }
+    },
+    children: {
       table: { disable: true }
+    },
+    iconPosition: {
+      options: ['left', 'right'],
+      control: { type: 'select' }
     }
   }
 };
@@ -21,22 +40,15 @@ type ButtonStory = Story<ButtonProps>;
 export const Default: ButtonStory = args => <Button {...args} />;
 
 Default.args = {
-  variant: 'secondary',
-  children: 'Awesome Button',
-  shape: 'squared',
-  size: 'md',
-  disabled: false,
-  fluid: false
+  children: 'Label',
+  size: 'md'
 };
 
 export const WithIcon: ButtonStory = args => <Button {...args} />;
 
 WithIcon.args = {
-  variant: 'primary',
   children: 'Label',
-  size: 'sm',
+  size: 'md',
   icon: <AiOutlineClose />,
-  iconPosition: 'left',
-  disabled: false,
-  fluid: false
+  iconPosition: 'left'
 };
