@@ -1,6 +1,6 @@
 {
   "name": "@neon-district/breadcrumb",
-  "version": "1.0.15",
+  "version": "1.0.14",
   "license": "MIT",
   "description": "ND Breadcrumb.",
   "main": "dist/index.js",

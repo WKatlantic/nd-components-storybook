@@ -1,6 +1,6 @@
 {
   "name": "@neon-district/tab",
-  "version": "1.0.15",
+  "version": "1.0.14",
   "license": "MIT",
   "description": "ND Tab.",
   "source": "index.ts",

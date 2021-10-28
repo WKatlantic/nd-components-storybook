@@ -1,6 +1,6 @@
 {
   "name": "@neon-district/pagination",
-  "version": "1.0.15",
+  "version": "1.0.14",
   "license": "MIT",
   "description": "ND Pagination.",
   "source": "index.ts",
