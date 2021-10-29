@@ -1,25 +1,18 @@
 import React from 'react';
 
-import { BadgeStyled } from './styles';
+import { BadgeStyles } from './styles';
 
 export type BadgeProps = {
   /**
-   * Should be defined in figma yet.
-   *
-   * @default ?
+   * @default "md"
    */
-  type?: string;
+  size: 'sm' | 'md' | 'lg';
   /**
-   * Badge text
+   *
    */
   children: React.ReactNode;
 };
 
-/**
- * Badge component
- *
- * @description Badges are used to highlight an item's status for quick recognition.
- */
-export const Badge = ({ type, children }: BadgeProps) => {
-  return <BadgeStyled type={type}>{children}</BadgeStyled>;
+export const Badge = ({ size = 'md', children }: BadgeProps) => {
+  return <BadgeStyles size={size}>{children}</BadgeStyles>;
 };

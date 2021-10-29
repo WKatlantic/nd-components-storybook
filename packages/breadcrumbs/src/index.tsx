@@ -19,45 +19,42 @@ const HomeIcon = () => (
 
 export type BreadcrumbProps = {
   /**
-   * The breadcrumb items.
+   *
    */
   children: React.ReactNode;
 };
 
-/**
- * Breadcrumb components
- *
- * @description The breadcrumb component is used to display a list of items that
- */
-const Breadcrumb = ({ children }: BreadcrumbProps) => <Main>{children}</Main>;
+export const Breadcrumb = ({ children }: BreadcrumbProps) => (
+  <Main>{children}</Main>
+);
 
 export type BreadcrumbItemProps = {
   /**
-   * If active is true, the item will be rendered with a different style.
+   *
    */
   active?: boolean;
   /**
-   * if is `true`, it shows home icon.
+   *
    */
-  isHome?: boolean;
+  icon?: boolean;
   /**
-   * The text to display
+   *
    */
   children: React.ReactNode;
 };
 
-const BreadcrumbItem = ({ active, isHome, children }: BreadcrumbItemProps) => {
+const Item = ({ active, icon, children }: BreadcrumbItemProps) => {
   return (
     <>
       <Section active={active}>
-        {isHome && <HomeIcon />}
+        {icon && <HomeIcon />}
 
         <Text active={active}>{children}</Text>
       </Section>
 
-      <Divider>|</Divider>
+      <Divider active={active}>|</Divider>
     </>
   );
 };
 
-export { Breadcrumb, BreadcrumbItem };
+Breadcrumb.Item = Item;

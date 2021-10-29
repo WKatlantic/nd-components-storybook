@@ -9,7 +9,8 @@ export default {
   component: Avatar,
   argTypes: {
     size: {
-      control: { type: 'radio' }
+      options: [24, 32, 48, 64, 80, 88, 160, 192, 240],
+      control: { type: 'select' }
     }
   }
 } as Meta;
@@ -17,7 +18,5 @@ export default {
 export const Default: Story<AvatarProps> = args => <Avatar {...args} />;
 
 Default.args = {
-  size: '3xl',
-  src: 'https://avatarfiles.alphacoders.com/188/thumb-1920-188870.jpg',
-  alt: 'Avatar description'
+  size: 80
 };

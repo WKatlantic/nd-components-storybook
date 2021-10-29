@@ -15,9 +15,7 @@ const CheckIcon = () => (
 
 export type CheckboxProps = {
   /**
-   * Checkbox size
-   *
-   * @default "md"
+   * Checkbox size, default value `md`
    */
   size?: 'sm' | 'md' | 'lg';
   /**
@@ -27,25 +25,29 @@ export type CheckboxProps = {
 } & CheckboxBase.CheckboxProps;
 
 /**
- * Checkbox component
+ * Checkbox component made with Radix-UI
  *
- * @description used in forms when a user needs to select multiple values from several options.
- *
- * Made with radix-ui
- *
+ * To check all props
  * @see https://www.radix-ui.com/docs/primitives/components/checkbox
  */
 export const Checkbox = React.forwardRef<HTMLButtonElement, CheckboxProps>(
-  ({ name, size = 'md', children, ...props }, ref) => {
+  ({ defaultChecked, value, size = 'md', children, ...props }, ref) => {
     return (
       <Wrapper>
-        <CheckboxInput ref={ref} id={`checkbox-${name}`} size={size} {...props}>
-          <CheckboxIndicator>
+        <CheckboxInput
+          ref={ref}
+          id={`checkbox-${value}`}
+          value={value}
+          size={size}
+          defaultChecked={defaultChecked}
+          {...props}
+        >
+          <CheckboxIndicator size={size}>
             <CheckIcon />
           </CheckboxIndicator>
         </CheckboxInput>
 
-        <Label htmlFor={`checkbox-${name}`} size={size}>
+        <Label htmlFor={`checkbox-${value}`} size={size}>
           {children}
         </Label>
       </Wrapper>

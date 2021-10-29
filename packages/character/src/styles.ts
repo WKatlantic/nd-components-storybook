@@ -1,103 +1,111 @@
-import styled from '@neon-district/system';
+import styled, { css } from '@neon-district/system';
 
 import { CharacterProps } from '.';
 
-const wrapperVariants = {
-  size: {
-    md: {
-      width: 80,
-      height: 80
-    },
-    xl: {
-      width: 160,
-      height: 160
-    }
-  }
+const sizes = {
+  80: css`
+    width: 80px;
+    height: 80px;
+  `,
+  160: css`
+    width: 160px;
+    height: 160px;
+  `
 };
 
-type WrapperProps = {
-  size: 'md' | 'xl';
-} & Pick<CharacterProps, 'active'>;
+export const Container = styled.div<
+  Pick<CharacterProps, 'active'> & { size: 80 | 160 }
+>`
+  ${({ theme, active, size }) => css`
+    position: relative;
 
-export const Wrapper = styled('div')<WrapperProps>(
-  ({ theme, active, size }) => ({
-    position: 'relative',
+    ${size && sizes[size]}
+    ${active &&
+    css`
+      border: 1px solid ${theme.colors.pink1};
+    `}
+  `}
+`;
 
-    // variant styles
-    ...wrapperVariants.size[size],
+export const Overlay = styled.div`
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+`;
 
-    // conditional styles
-    ...(active && { border: `1px solid ${theme.colors.pink1}` })
-  })
-);
+export const Top = styled.div<{ size: 80 | 160 }>`
+  ${({ size }) => css`
+    padding: ${size === 160 ? '12px' : '4px'};
+    padding-bottom: 0;
+    display: flex;
+    flex-direction: column;
+  `}
+`;
 
-export const Overlay = styled('div')({
-  position: 'absolute',
-  top: 0,
-  width: '100%',
-  height: '100%',
-  display: 'flex',
-  flexDirection: 'column',
-  justifyContent: 'space-between'
-});
+export const Bottom = styled.div<{ size: 80 | 160 }>`
+  ${({ size }) => css`
+    padding: ${size === 160 ? '12px' : '4px'};
+    padding-top: 0;
 
-export const Top = styled('div')<{ size: 'md' | 'xl' }>(({ size }) => ({
-  padding: size === 'xl' ? '12px' : '4px',
-  paddingBottom: 0,
-  display: 'flex',
-  flexDirection: 'column'
-}));
+    display: flex;
+    justify-content: flex-end;
+  `}
+`;
 
-export const Bottom = styled('div')<{ size: 'md' | 'xl' }>(({ size }) => ({
-  padding: size === 'xl' ? '12px' : '4px',
-  paddingTop: 0,
-  display: 'flex',
-  justifyContent: 'flex-end'
-}));
+export const Typename = styled.div<{ empty: boolean; size: 80 | 160 }>`
+  ${({ theme, empty, size }) => css`
+    font-size: ${theme.fontSizes.md};
+    font-weight: ${theme.fontWeights.medium};
+    color: ${empty ? theme.colors.white : theme.colors.pink1};
+    line-height: 24px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
 
-export const Typename = styled('div')<{ empty: boolean; size: 'md' | 'xl' }>(
-  ({ theme, size, empty }) => ({
-    fontSize: theme.fontSizes.md,
-    fontWeight: theme.fontWeights.medium,
-    color: empty ? theme.colors.white : theme.colors.pink1,
-    lineHeight: '24px',
-    letterSpacing: '0.05em',
-    textTransform: 'uppercase',
+    ${size === 80 &&
+    css`
+      font-size: ${theme.fontSizes.sm};
+      line-height: 20px;
+    `}
+  `}
+`;
 
-    ...(size === 'md' && {
-      fontSize: theme.fontSizes.sm,
-      lineHeight: '20px'
-    })
-  })
-);
+export const Info = styled.span`
+  ${({ theme }) => css`
+    font-size: ${theme.fontSizes.sm};
+    font-weight: ${theme.fontWeights.medium};
+    color: ${theme.colors.white};
+    line-height: 24px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  `}
+`;
 
-export const Info = styled('span')(({ theme }) => ({
-  fontSize: theme.fontSizes.sm,
-  fontWeight: theme.fontWeights.medium,
-  color: theme.colors.white,
-  lineHeight: '24px',
-  letterSpacing: '0.05em',
-  textTransform: 'uppercase'
-}));
+export const Index = styled.div<{ size: 80 | 160 }>`
+  ${({ theme, size }) => css`
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-export const Index = styled('div')<{ size: 'md' | 'xl' }>(
-  ({ theme, size }) => ({
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: 32,
-    height: 32,
-    background: theme.colors.pink1,
-    color: theme.colors.white,
-    fontWeight: theme.fontWeights.medium,
-    fontSize: theme.fontSizes.md,
-    lineHeight: 24,
+    width: 32px;
+    height: 32px;
+    background: ${theme.colors.pink1};
+    color: ${theme.colors.white};
 
-    ...(size === 'md' && {
-      fontSize: theme.fontSizes.sm,
-      lineHeight: 20,
-      width: 20,
-      height: 20
-    })
-  })
-);
+    font-weight: ${theme.fontWeights.medium};
+    font-size: ${theme.fontSizes.md};
+    line-height: 24px;
+
+    ${size === 80 &&
+    css`
+      font-size: ${theme.fontSizes.sm};
+      line-height: 20px;
+
+      width: 20px;
+      height: 20px;
+    `}
+  `}
+`;

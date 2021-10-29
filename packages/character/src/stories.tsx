@@ -13,6 +13,5 @@ export const Default: Story<CharacterProps> = args => <Character {...args} />;
 
 Default.args = {
   active: false,
-  index: 1,
-  src: 'https://avatarfiles.alphacoders.com/188/thumb-1920-188870.jpg'
+  index: 1
 };

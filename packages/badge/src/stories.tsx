@@ -8,8 +8,9 @@ export default {
   title: 'Components/Data Display/Badge',
   component: Badge,
   argTypes: {
-    type: {
-      control: { type: 'radio' }
+    size: {
+      options: ['sm', 'lg', 'md'],
+      control: { type: 'select' }
     }
   }
 } as Meta;
@@ -17,5 +18,6 @@ export default {
 export const Default: Story<BadgeProps> = args => <Badge {...args} />;
 
 Default.args = {
-  children: 'New'
+  children: 'New',
+  size: 'md'
 };
