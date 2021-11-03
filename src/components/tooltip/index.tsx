@@ -1,44 +1,39 @@
 import React from 'react';
 
-import * as S from './styles';
+import { Root, Trigger } from '@radix-ui/react-tooltip';
+
+import { Content, Arrow } from './styles';
 
 export type TooltipProps = {
   /**
-   * The content of the tooltip
+   *
    */
   text?: string;
   /**
-   * The position of the tooltip
    *
    * @default "right"
    */
   position?: 'top' | 'right' | 'bottom' | 'left';
   /**
-   * The trigger of the tooltip
+   *
    */
   children?: React.ReactNode;
 };
 
-/**
- * Tooltip component
- *
- * @description informative message that appears when a user interacts with an element.
- *
- */
 export const Tooltip = ({
   text,
   position = 'right',
   children
 }: TooltipProps) => {
   return (
-    <S.Root>
-      <S.Trigger asChild>{children}</S.Trigger>
+    <Root>
+      <Trigger asChild>{children}</Trigger>
 
-      <S.Content sideOffset={5} side={position}>
+      <Content sideOffset={5} side={position}>
         {text}
 
-        <S.Arrow width={15} height={10} />
-      </S.Content>
-    </S.Root>
+        <Arrow width={15} height={10} />
+      </Content>
+    </Root>
   );
 };

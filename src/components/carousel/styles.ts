@@ -31,7 +31,6 @@ export const Wrapper = styled('section', {
     align: 'center',
     justify: 'center',
     mt: '$8',
-    p: 0,
 
     li: {
       d: 'flex',
@@ -39,7 +38,7 @@ export const Wrapper = styled('section', {
       justify: 'center',
       size: 8,
       m: '0 $1',
-      bg: '#311722',
+      bg: '$pink1',
       br: '$full',
       cursor: 'pointer',
       transition: '$fast',
@@ -59,7 +58,7 @@ export const Wrapper = styled('section', {
 
 export const Item = styled('article', {
   position: 'relative',
-  height: 120,
+  height: 190,
   d: 'flex',
   justify: 'center',
   flex: '1 0 auto',
@@ -69,7 +68,14 @@ export const Item = styled('article', {
 
   button: {
     position: 'absolute',
-    bottom: 24,
+    bottom: 50,
     textTransform: 'uppercase'
+  },
+
+  img: {
+    width: '100%',
+    height: '100%',
+    backgroundSize: 'cover',
+    objectFit: 'cover'
   }
 });

@@ -11,13 +11,16 @@ export default {
   component: Button,
   argTypes: {
     variant: {
-      options: ['primary', 'secondary', 'destructive', 'outline', 'naked']
+      options: ['primary', 'secondary', 'destructive', 'outline', 'naked'],
+      control: { type: 'radio' }
     },
     shape: {
-      options: ['squared', 'rounded']
+      options: ['square', 'rounded'],
+      control: { type: 'radio' }
     },
     size: {
-      options: ['sm', 'md']
+      options: ['sm', 'md'],
+      control: { type: 'radio' }
     },
     icon: {
       table: { disable: true }
