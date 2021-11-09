@@ -1,18 +1,45 @@
 import React from 'react';
 
-import { ListboxInputProps } from '@reach/listbox';
+import { ListboxInputProps, ListboxOptionProps } from '@reach/listbox';
 
-import { SelectItemProps, SelectProps } from '..';
+import { VariantProps } from '../../../system';
 
-import { Flex } from '../../flex';
+import { useId } from '../../../hooks';
 
 import { ChevronDownIcon } from '../icon';
 
-import { HiBadgeCheck } from 'react-icons/hi';
-
 import * as S from './styles';
 
-type CustomSelectProps = Omit<SelectProps, 'items'> & ListboxInputProps;
+export type CustomSelectProps = {
+  /**
+   * Style of the select
+   *
+   * @default 'solid'
+   */
+  variant?: VariantProps<typeof S.Button>['variant'];
+  /**
+   * Size of the select
+   *
+   * @default 'md'
+   */
+  size?: VariantProps<typeof S.Button>['size'];
+  /**
+   * Show label text
+   */
+  label?: string;
+  /**
+   * Show hint text
+   */
+  hint?: string;
+  /**
+   * If `true` apply error style
+   */
+  error?: string | string[];
+  /**
+   * Options to be shown in the select
+   */
+  children?: React.ReactNode;
+} & ListboxInputProps;
 
 /**
  * Custom Select component
@@ -20,7 +47,6 @@ type CustomSelectProps = Omit<SelectProps, 'items'> & ListboxInputProps;
  * @description used in desktop version
  */
 const CustomSelect = ({
-  id,
   label,
   hint,
   error,
@@ -30,20 +56,22 @@ const CustomSelect = ({
   onChange,
   children,
 }: CustomSelectProps) => {
+  const selectId = useId('select');
+
   return (
     <S.Wrapper>
       {label && (
-        <S.Label htmlFor={id} size={size}>
+        <S.Label id={selectId} size={size}>
           {label}
         </S.Label>
       )}
 
       <S.SelectWrapper
-        aria-labelledby={id}
+        aria-labelledby={selectId}
         disabled={disabled}
         onChange={onChange}
       >
-        <S.Select size={size} variant={variant} arrow={<ChevronDownIcon />} />
+        <S.Button size={size} variant={variant} arrow={<ChevronDownIcon />} />
 
         <S.Popover>
           <S.List>{children}</S.List>
@@ -57,20 +85,15 @@ const CustomSelect = ({
   );
 };
 
-type CustomSelectItemProps = SelectItemProps;
+export type CustomSelectItemProps = {
+  /**
+   * Option item to be shown in the select
+   */
+  children?: React.ReactNode;
+} & Omit<ListboxOptionProps, 'label'>;
 
 const CustomSelectItem = ({ children, ...props }: CustomSelectItemProps) => {
-  return (
-    <S.Option {...props}>
-      <Flex css={{ align: 'center' }}>
-        <Flex css={{ mr: '$3' }}>
-          <HiBadgeCheck />
-        </Flex>
-
-        {children}
-      </Flex>
-    </S.Option>
-  );
+  return <S.Option {...props}>{children}</S.Option>;
 };
 
 export { CustomSelect, CustomSelectItem };
